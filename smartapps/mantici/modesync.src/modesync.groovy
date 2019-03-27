@@ -42,9 +42,10 @@ preferences {
      page(name: "presenceSettings", title: "Auto set by presence", nextPage: "homeSettings", uninstall: false) {
         section("Devices") {
 	   		input "presenceSensors", "capability.presenceSensor",title: "When these sensors all leave:", required: false, multiple:true
-            input "presenceNotification", "bool", title: "Send a Push Notification"
             input "autoArm", "bool", title: "Set panel to Arm:Away \n(if disarmed)"
             input "autoAway", "bool", title: "Set mode to Away"
+            input "presenceNotification", "bool", title: "Send a Push Notification"
+            input "presencePhoneNumber", "phone", title: "Send a Text Message Notification", required: false
             //input "presenseSet", "enum", title: "Set Security Panel to:",options: ["Armed: Away", "Armed: Stay", "Disarmed"], required: false
             //input "presenceMode", "enum", title: "Set mode to:",options: ["Home", "Away", "Night"], required: false
 
@@ -154,6 +155,9 @@ def presenceSensorHandler(evt) {
                 panel.armAway(armedAway)
                 if (presenceNotification == true ) {
                     sendPush( "System Auto-Armed" )
+                }
+                if ( presencePhoneNumber ) {
+                    sendSms( presencePhoneNumber, "System Auto-Armed" )
                 }
             }
         }
