@@ -44,6 +44,7 @@ def selectButton() {
 	dynamicPage(name: "selectButton", title: "First, select your button device", nextPage: "configureButton1", uninstall: configured()) {
 		section {
 			input "buttonDevice", "capability.button", title: "Button", multiple: false, required: true
+            label title: "Assign a name", required: false
 		}
 
 		section(title: "More options", hidden: hideOptionsSection(), hideable: true) {
@@ -260,11 +261,11 @@ def findMsg(type, buttonNumber) {
 def toggle(devices) {
 	log.debug "toggle: $devices = ${devices*.currentValue('switch')}"
 
-	if (devices*.currentValue('switch').contains('on')) {
-		devices.off()
-	}
-	else if (devices*.currentValue('switch').contains('off')) {
+	if (devices*.currentValue('switch').contains('off')) {
 		devices.on()
+	}
+	else if (devices*.currentValue('switch').contains('on')) {
+		devices.off()
 	}
 	else if (devices*.currentValue('lock').contains('locked')) {
 		devices.unlock()
