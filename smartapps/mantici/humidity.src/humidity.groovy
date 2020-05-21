@@ -19,9 +19,9 @@ definition(
     author: "Michael Antici",
     description: "control a switch based on humidity",
     category: "Convenience",
-    iconUrl: "https://graph.api.smartthings.com/api/devices/icons/st.Weather.weather12-icn",
-    iconX2Url: "https://graph.api.smartthings.com/api/devices/icons/st.Weather.weather12-icn?displaySize=2x",
-    iconX3Url: "https://graph.api.smartthings.com/api/devices/icons/st.Weather.weather12-icn?displaySize=3x",
+    iconUrl: "http://cdn.device-icons.smartthings.com/Weather/weather12-icn.png",
+    iconX2Url: "http://cdn.device-icons.smartthings.com/Weather/weather12-icn@2x.png",
+    iconX3Url: "http://cdn.device-icons.smartthings.com/Weather/weather12-icn@3x.png",
     pausable: true
 )
 
